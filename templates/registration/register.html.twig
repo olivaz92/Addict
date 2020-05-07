@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <!-- register -->
+    {{  form_start(registrationForm) }}
+    <div class="sign-up-form">
+        <h3>Inscription</h3>
+        <p>
+            Venez partager votre passion au travers de vos pensées
+        </p>
+        <div class="sign-up">
+            <h5>Vos informations personnelles</h5>
+            <div class="sign-u">
+                <div class="sign-up2">
+                    <form>
+                        {{ form_row(registrationForm.pseudo) }}
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="sign-u">
+                <div class="sign-up2">
+                    <form>
+                        {{ form_row(registrationForm.mail) }}
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="sign-u">
+                <div class="sign-up2">
+                    <form>
+                        {{ form_row(registrationForm.photo) }}
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="sign-u">
+                <div class="sign-up2">
+                    <form>
+                        {{ form_row(registrationForm.plainPassword) }}
+
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="sign-u">
+                <div class="sign-up2">
+                    <form>
+                        {{ form_row(registrationForm.sexe) }}
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <form>
+                <button class="btn sign-in" style="background-color:orangered;color: white">{{ button_label|default('Enregistrer ') }}</button>
+            </form>
+        </div>
+    </div>
+    {{ form_end(registrationForm) }}
+    <!-- //register -->
+{% endblock %}

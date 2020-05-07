@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form >
+
+</form>
+    <!-- login-page -->
+    <div class="login">
+        <div class="login-grids">
+            <div class="col-md-6 log">
+                <h3>Connexion</h3>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        <p>Vous êtes déjà connecté en tant que: {{ app.user.mail }}</p>
+                    </div>
+                {% endif %}
+                <br>
+                <form method="post">
+                    <label for="inputMail">Mail:</label>
+                    <input type="text" value="{{ last_username }}" name="mail" id="inputMail" class="form-control" required autofocus>
+                    <label for="inputPassword">Password:</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+
+                    {#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
+
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                    #}
+                    <input type="submit" value="se connecter">
+                </form>
+{#                <a href="#">Forgot Password ?</a>#}
+            </div>
+            <div class="col-md-6 login-right">
+                <h3>Inscription</h3>
+                <p> Si vous n'êtes pas encore inscrits chez nous veuillez clicker sur le boutton en bas.</p>
+                <a href="register.html" class="hvr-bounce-to-bottom button">Créer un compte</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //login-page -->
+{% endblock %}

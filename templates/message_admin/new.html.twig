@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MessageAdmin{% endblock %}
+
+{% block body %}
+{#    <h1>Create new MessageAdmin</h1>#}
+
+{#    {{ include('message_admin/_form.html.twig') }}#}
+
+{#    <a href="{{ path('message_admin_index') }}">back to list</a>#}
+    <!-- contact -->
+    <div class="contact">
+        <div class="contact-left">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2620.908687693293!2d2.3574429999999995!3d48.936181!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66eb34e18b951%3A0xc3c6a4ac9498bfce!2sWorld&#39;s+Business+Import!5e0!3m2!1sen!2sin!4v1429768672602" frameborder="1" style="border:0"></iframe>
+        </div>
+        <div class="contact-right">
+            <p class="phn">+9100 2481 5842</p>
+            <p class="phn-bottom">59000 Lille
+                <span>6 Place antoine Tacq</span></p>
+            <p class="lom">Situé dans le meme batiment que carrefour </p>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="contact-left1">
+            <h3>Contactez nous <span>en cas de problème ou pour plus d'informations</span></h3>
+
+                {{ form_start(form) }}
+                {{ form_row(form.nom) }}
+                {{ form_row(form.telephone) }}
+                {{ form_row(form.mail) }}
+                   {{ form_row(form.message) }}
+                    <input type="submit" value="Submit">
+            {{ form_end(form) }}
+            <div class="clearfix"> </div>
+        </div>
+        <div class="contact-right1">
+            <h3>Suivez nous sur nos <span>réseaux sociaux</span></h3>
+            <ul>
+                <li><a href="#" class="g1"> </a></li>
+                <li><a href="#" class="p1"> </a></li>
+                <li><a href="#" class="facebook1"> </a></li>
+                <li><a href="#" class="twitter1"> </a></li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <!-- //contact -->
+{% endblock %}

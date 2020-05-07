@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Actualite{% endblock %}
+
+{% block body %}
+
+<div class="row card-body" style="background-color: #222222">
+    <div class="col-sm-5 col-lg-5" style="margin-left: auto;margin-right: auto;margin-bottom: 50px;width:500px;background-color: white">
+
+        <div class="row">
+            <div class="col-6">
+                <h2>
+                    <img src="{{asset('uploads/photo/'~actualite.iduser.photo )}}" width="auto" height="100px" style="border-radius: 100%">
+                    {{ actualite.iduser }}
+                </h2>
+            </div>
+            <div class="col-6" align="right">
+
+            </div>
+        </div>
+        <br>
+        <p class="card-text">{{ actualite.titre }}</p>
+        <p class="card-text disabled">{{ actualite.date }} <i class="fas fa-globe-europe"></i> </p>
+        <div class="card">
+            {% if  actualite.image!= null%}
+                <img class="card-img-center" alt="Card image" src="{{asset('uploads/images/'~actualite.image )}}" width="100%" >
+                <br>
+            {% endif %}
+            {% if  actualite.description!= null%}
+                <div class="card-body">
+                    <p class="card-text">{{ actualite.description }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-sm-5 col-lg-5" style="margin-left: auto;margin-right: auto;margin-bottom: 50px;width:500px;background-color: white">
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_widget(form) }}
+            </div>
+            <div class="form-group" align="center">
+                <button class="btn btn-success" align="center">{{ button_label|default('Modifier') }}</button>
+            </div>
+            {{ form_end(form) }}
+    </div>
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!-- single -->
+    <div class="single-page-artical">
+        <div class="artical-content">
+            <h3>{{ actualite.titre }}</h3>
+            {% if  actualite.image!= null%}
+            <img class="img-responsive" src="{{asset('uploads/images/'~actualite.image )}}" alt=" " />
+            {% endif %}
+            {% if  actualite.description!= null%}
+            <p>
+                {{ actualite.description }}
+            </p>
+            {% endif %}
+        </div>
+        <div class="artical-links">
+            <ul>
+                <li><small> </small><span>{{ actualite.date }}</span></li>
+                <li><a href="#"><small class="admin"> </small><span>{{ actualite.iduser }}</span></a></li>
+                <li><a href="#"><small class="no"> </small><span>({{ actualite.commentaires|length }}) commentaires</span></a></li>
+            </ul>
+        </div>
+        {#        Les commentaires#}
+        <div class="comment-grid-top">
+            <h3>Commentaires</h3>
+            {% for commentaire in actualite.getCommentaires %}
+            <div class="comments-top-top">
+                <div class="top-comment-left">
+                    <a href="#"><img class="img-responsive" src="{{asset('uploads/photo/'~commentaire.idUser.photo )}}" alt=""></a>
+                </div>
+                <div class="top-comment-right">
+                    <ul>
+                        <li><span class="left-at"><a href="#">{{ commentaire.idUser }}</a></span></li>
+                        <li><span class="right-at">{{ commentaire.date }}</span></li>
+                    </ul>
+                    <p>
+                        {{ commentaire.libelle }}
+                    </p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            {% else %}
+            <div class="comments-top-top top-grid-comment">
+                <div class="top-comment-left">
+                </div>
+                <div class="top-comment-right">
+                    <p>Soyez le premier à laisser un commentaire</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            {% endfor %}
+            <div class="comments-top-top">
+                <div class="top-comment-left">
+                    <a href="#"><img class="img-responsive" src="{{asset('uploads/photo/'~app.user.photo )}}" alt="{{ app.user }}"></a>
+                </div>
+                <div class="top-comment-right">
+                    {{ form_start(form) }}
+                    <p>
+                        {{ form_row(form.libelle) }}<button class="btn btn-success">{{ button_label|default('Commenter') }}</button>
+                    </p>
+                    {{ form_end(form) }}
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- single -->
+{% endblock %}

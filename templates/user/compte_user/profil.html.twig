@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+    <!-- register -->
+    <div class="sign-up-form">
+        <h3>Votre profil</h3>
+        <p>
+            Modifier vos informations personnelles.
+        </p>
+        <div class="sign-up">
+            {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
+
+
+
+{% endblock %}

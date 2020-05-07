@@ -1,0 +1,89 @@
+
+    <head>
+        <!-- for-mobile-apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="Quickly Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+         Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    {% block stylesheets %}
+        {#        Bootstrap4#}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+        {#        Bootstrap4#}
+
+        {#        personnel style#}
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+            function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- //for-mobile-apps -->
+        <link href="{{ asset('build/assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{{ asset('build/assets/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <!-- js -->
+        <script src="{{ asset('build/assets/js/jquery-1.11.1.min.js') }}"></script>
+        <!-- //js -->
+
+    {% endblock %}
+    </head>
+    <body>
+    <!-- banner-body -->
+    <div class="banner-body">
+        <div class="container">
+    {{ include('navbar/index.html.twig') }}
+    {% block body %}
+    {% endblock %}
+        </div>
+    </div>
+    <div class="footer-bottom fixed-bottom" >
+        <div class="container">
+            <p>© 2020 PPE | Réalisé par <a href="http://azzibrouckazziley.yo.fr/"> Olivier AZZIBROUCK</a></p>
+        </div>
+    </div>
+    </body>
+    {% block javascripts %}
+{#        Bootstrap4#}
+        <script src="{{ asset('build/assets/js/bootstrap.js') }}"></script>
+        <script type="text/javascript">
+            $(window).load(function() {
+                $("#flexiselDemo1").flexisel({
+                    visibleItems: 3,
+                    animationSpeed: 1000,
+                    autoPlay: false,
+                    autoPlaySpeed: 30000,
+                    pauseOnHover: true,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint: 480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint: 640,
+                            visibleItems: 2
+                        },
+                        tablet: {
+                            changePoint: 768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+
+            });
+
+        </script>
+        <script type="text/javascript" src="{{ asset('build/assets/js/jquery.flexisel.js') }}"></script>
+{#        bootstrap4#}
+        <!-- start-smoth-scrolling -->
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event){
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                });
+            });
+        </script>
+        <!-- start-smoth-scrolling -->
+    {% endblock %}
+
+
+
+
+    
+

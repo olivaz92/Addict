@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MessageAdmin index{% endblock %}
+
+{% block body %}
+    <h1>MessageAdmin index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Telephone</th>
+                <th>Mail</th>
+                <th>Message</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message_admin in message_admins %}
+            <tr>
+                <td>{{ message_admin.id }}</td>
+                <td>{{ message_admin.nom }}</td>
+                <td>{{ message_admin.telephone }}</td>
+                <td>{{ message_admin.mail }}</td>
+                <td>{{ message_admin.message }}</td>
+                <td>
+                    <a href="{{ path('message_admin_show', {'id': message_admin.id}) }}">show</a>
+                    <a href="{{ path('message_admin_edit', {'id': message_admin.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('message_admin_new') }}">Create new</a>
+{% endblock %}

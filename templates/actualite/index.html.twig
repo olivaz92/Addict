@@ -1,0 +1,126 @@
+
+{% block body %}
+    <br>
+    <div class="container mt-3" align="center">
+        <!-- Button to Open the Modal -->
+        Ajouter un article
+
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+            <i class="fas fa-plus-circle"></i>
+        </button>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Partager nous une pensée ou idée!</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        {{ form_start(formActualite) }}
+                        {{ form_widget(formActualite) }}
+                        <button class="btn btn-success">{{ button_label|default('Enregister') }}</button>
+                        {{ form_end(formActualite) }}
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+    {% for actualite in actualites %}
+        <div class="row card-body">
+            <div class="col-xs-8 col-sm-8 col-lg-8" style="margin-left: auto;margin-right: auto">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>
+                            <img src="{{asset('uploads/photo/'~actualite.iduser.photo )}}" width="auto" height="100px" style="border-radius: 100%">
+                            {{ actualite.iduser }}
+                        </h2>
+                    </div>
+
+                    <div class="col-6" align="right">
+                        {% if app.user == actualite.iduser %}
+                            <div class="dropdown dropdown-menu-left">
+                                <button type="button" class="btn toggle" data-toggle="dropdown">
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"> {{ include('actualite/_delete_form.html.twig')}}</a>
+                                    <a  class="dropdown-item info"  href="{{ path('actualite_edit', {'id': actualite.id}) }}" ><i class="fas fa-edit"></i>Modifier</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <br>
+                <p class="card-text">{{ actualite.titre }}</p>
+                <p class="card-text disabled">{{ actualite.date }} <i class="fas fa-globe-europe"></i> </p>
+                <div class="card">
+                    {% if  actualite.image!= null%}
+                        <img class="card-img-center" alt="Card image" src="{{asset('uploads/images/'~actualite.image )}}" width="100%" >
+                    {% endif %}
+                    {% if  actualite.description!= null%}
+                        <div class="card-body">
+                            <p class="card-text">{{ actualite.description }}</p>
+                        </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <button type="button" class="btn btn-outline-info"  data-toggle="collapse" data-target="#commentaires">
+                            <i class="fa fa-comment-dots">
+                                ({{ actualite.getCommentaires|length }})
+                            </i>
+                            voir les commenatires
+
+                        </button>
+                        <a href="{{ path('actualite_show', {'id': actualite.id}) }}">
+                            <button type="button" class="btn btn-outline-info" >
+
+                            <i class="fa fa-pen">
+
+                            </i>
+
+                            Laisser un commentaire
+
+                            </button>
+                        </a>
+                        {#//Les commentaires#}
+                        <div id="commentaires" class="collapse" style="height: 10px">
+                            <br>
+                            {% for commentaire in actualite.getCommentaires %}
+                            <div class="media border" style="background-color:ghostwhite ">
+                                <img src="{{asset('uploads/photo/'~commentaire.idUser.photo )}}" alt="John Doe" class="ml-4 mt-2 rounded-circle" style="width:60px;">
+                                <div class="media-body ml-4">
+                                    <p class="card-text"><strong>{{ commentaire.idUser }}</strong> <small><br><i>Publié le {{ commentaire.date }}</i></small></p>
+                                    <p class="card-text">{{ commentaire.libelle }}.</p><br>
+                                </div>
+                            </div><br>
+
+                                {% else %}
+                                <p>Soyez le premier à laisser un commentaire</p>
+                                   <br>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    {% else %}
+                <p >Soyez le premier à éditer un article</p>
+    </div>
+        <br><br><br>
+    {% endfor %}
+    <br><br><br>
+{% endblock %}

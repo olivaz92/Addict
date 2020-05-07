@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pense index{% endblock %}
+
+{% block body %}
+    <h1>Pense index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pense in penses %}
+            <tr>
+                <td>{{ pense.id }}</td>
+                <td>{{ pense.libelle }}</td>
+                <td>{{ pense.date ? pense.date}}</td>
+                <td>
+                    <a href="{{ path('pense_show', {'id': pense.id}) }}">show</a>
+                    <a href="{{ path('pense_edit', {'id': pense.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('pense_new') }}">Create new</a>
+{% endblock %}

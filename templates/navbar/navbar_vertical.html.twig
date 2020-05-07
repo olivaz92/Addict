@@ -1,0 +1,19 @@
+{% block body %}
+    <nav class="sidebar navbar-dark bg-dark col-2 position-fixed" style="height: 100%;">
+        <br><br>
+
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <p class="list-group list-group-flush"   href="" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                <img class="fa fa-user" src="" style="width:180px; height: 180px; border-radius: 100%; background-color: white; margin-right: auto;margin-left: auto">
+
+            </p>
+            <br><br>
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Setting</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+            <a class="list-group list-group-flush" id="v-pills-settings-tab"  href="" role="tab" aria-controls="v-pills-settings" aria-selected="false">{{ include('user/account_delete_form.html.twig') }}</a>
+
+
+        </div>
+    </nav>
+
+{% endblock %}
